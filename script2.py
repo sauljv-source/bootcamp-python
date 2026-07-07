@@ -1,31 +1,21 @@
-# =====================================================================
-# STEP 1: La Estructura Compleja (Lista que contiene Diccionarios)
-# =====================================================================
-# Esto simula una base de datos con las tareas del bootcamp.
+#Lista que contiene diccionarios
+
 tareas_proyecto = [
-    {"id": 1, "descripcion": "Configurar Git en el equipo", "encargado": "Saúl", "completada": True},
-    {"id": 2, "descripcion": "Resolver ejercicios del Día 2", "encargado": "Saúl", "completada": False},
-    {"id": 3, "descripcion": "Subir entregable a GitHub", "encargado": "Tutor", "completada": False}
+    {"id": 1, "descripción": "Configurar Git en el equipo", "encargado": "Saúl", "completada": True},
+    {"id": 2, "descripción": "Resolver ejercicios esenciales phyton", "encargado": "Saúl", "completada": True},
+    {"id": 3, "descripción": "Ficheros y JSON", "encargado": "Saúl", "completada": False},
+    {"id": 4, "descripción": "Peticiones HTTP y APIs REST", "encargado": "Saúl", "completada": False},
+    {"id": 5, "descripción": "Miniproyecto semana 1", "encargado": "Saúl", "completada": False},
+    {"id": 6, "descripción": "Evaluación final", "encargado": "Suso", "completada": False}
 ]
 
-# =====================================================================
-# STEP 2: Filtrado con Bucle 'for' y condicionales
-# =====================================================================
-print("--- TAREAS PENDIENTES DE SAÚL ---")
+# Comprobamos si el encargado es "Saúl" y si la tarea no está completada, imprimir id y descripción si asi es
 
-# RE RETO 1: Haz un bucle 'for' que recorra 'tareas_proyecto'.
-# Debe comprobar si el encargado es "Saúl" y si la tarea NO está completada (completada == False).
-# Si cumple las condiciones, imprime su descripción.
+print("Estas son las tareas que Saúl no ha realizado todavia:")
+for i in tareas_proyecto:
+    if i["encargado"] == "Saúl" and i["completada"] == False:
+        print(f"Id {i['id']} y descripción: {i['descripción']}.")
 
-# Tu código aquí...
-
-
-# =====================================================================
-# STEP 3: Modificación Dinámica y Método .items()
-# =====================================================================
-print("\n--- ACTUALIZAR ESTADO DE TAREA ---")
-
-# El usuario decide qué tarea ha terminado
 id_a_cambiar = int(input("Introduce el ID de la tarea que has completado (ej: 2): "))
 
 # RE RETO 2: Recorre la lista de tareas. Busca el diccionario que tenga ese "id".
@@ -34,7 +24,6 @@ id_a_cambiar = int(input("Introduce el ID de la tarea que has completado (ej: 2)
 # Tu código aquí...
 
 
-print("\n--- INFORME FINAL DE LA TAREA MODIFICADA ---")
 # RE RETO 3: Usa un bucle 'for' con el método '.items()' para mostrar los 
 # datos de la tarea modificada línea por línea con el formato "Clave -> Valor".
 # Pista del formato:
