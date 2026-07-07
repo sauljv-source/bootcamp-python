@@ -51,7 +51,7 @@ estudiante = {
     "nombre": comprobar_texto("Nombre: ", "El valor introducido no es un nombre válido.\nInténtalo de nuevo.").title(),
     "profesion": comprobar_texto("¿Cuál es su trabajo?: ", "No es una profesión válida.\nInténtalo de nuevo.").lower(),
     "años_de_experiencia": comprobar_entero_positivo("Años de experiencia: ", "El valor tiene que ser positivo", "El dato introducido no es un valor válido.\nInténtalo de nuevo."),
-    "nota_media_licenciatura": comprobar_float_rango("Nota media de su licenciatura: ", "El número debe estar entre 0.0 y 10.0.", "El dato introducido no es un número válido.\nInténtalo de nuevo.")
+    "nota_media_licenciatura": comprobar_float_rango("Nota media de su licenciatura: ", "El número debe estar entre 5.0 y 10.0.", "El dato introducido no es un número válido.\nInténtalo de nuevo.")
 }
 
 tiene_master, nombre_del_master = master("¿Has cursado un máster? (sí/no): ", "¿Cuál?: ", "El valor introducido no es un nombre válido.\nInténtalo de nuevo.", "Respuesta no válida. Escribe 'sí' o 'no'.")
