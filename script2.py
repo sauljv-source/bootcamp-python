@@ -16,7 +16,13 @@ for i in tareas_proyecto:
     if i["encargado"] == "Saúl" and i["completada"] == False:
         print(f"Id {i['id']} y descripción: {i['descripción']}.")
 
-id_a_cambiar = int(input("Introduce el ID de la tarea que has completado (ej: 2): "))
+# Procedemos a cambiar la tarea realizada ahora como completada
+
+id_a_cambiar = int(input("Introduce el id de la tarea completada: "))
+
+for i in tareas_proyecto:
+    if i["id"] == id_a_cambiar:
+        i["id"] = 
 
 # RE RETO 2: Recorre la lista de tareas. Busca el diccionario que tenga ese "id".
 # Cuando lo encuentres, cambia su valor de "completada" a True.
