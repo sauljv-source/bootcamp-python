@@ -20,15 +20,23 @@ while True:
     if eleccion in ["sí", "si"]:
         # Procedemos a cambiar la tarea realizada ahora como completada
         id_a_cambiar = int(input("Introduce el id de la tarea completada: "))
+        
+        tarea_encontrada = False
 
         for i in tareas_proyecto:
             if i["id"] == id_a_cambiar:
-                i["completada"] = True
-        
-                print("Resumen de la actualización en el sistema:")
-                for clave, valor in i.items():
-                 print(f"{clave.capitalize()}: {valor}")
-                break
+                tarea_encontrada = True
+                
+                if i["completada"] == True:
+                    print(f"La tarea con id {id_a_cambiar} ya está completada.")
+                    
+                else:
+                    i["completada"] = True
+                    print("Resumen de la actualización en el sistema:")
+                    for clave, valor in i.items():
+                        print(f"{clave.capitalize()}: {valor}")
+                    break
+        break
     elif eleccion == "no":
         print("Registro perfectamente actualizado.")
         break
