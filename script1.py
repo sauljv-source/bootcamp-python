@@ -89,5 +89,3 @@ else:
     
 if len(idiomas_en_comun) >= 3 or estudiante["nota_media_licenciatura"] - requisitos_junior[1] >= 2 or estudiante["estudio_master"]:
     print("Tambien sobresales por encima de la media ya sea por los idiomas, el haber cursado un master o tu nota media durante la licenciatura.\nTu perfil estará bien valorado.")
-
-# Listas y comprensiones de listas
