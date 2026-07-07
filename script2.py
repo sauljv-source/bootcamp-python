@@ -29,6 +29,7 @@ while True:
                 
                 if i["completada"] == True:
                     print(f"La tarea con id {id_a_cambiar} ya está completada.")
+                    continue
                     
                 else:
                     i["completada"] = True
@@ -36,7 +37,11 @@ while True:
                     for clave, valor in i.items():
                         print(f"{clave.capitalize()}: {valor}")
                     break
-        break
+
+        # Por si se introduce un id que no este en nuestras tareas, para que no salga del bucle while
+        if tarea_encontrada:
+            break
+            
     elif eleccion == "no":
         print("Registro perfectamente actualizado.")
         break
