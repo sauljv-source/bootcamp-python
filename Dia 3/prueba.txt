@@ -1,0 +1,4 @@
+Dia 3
+Primera prueba para crear archivos desde phyton.
+Tambien de escritura de datos
+SQL
