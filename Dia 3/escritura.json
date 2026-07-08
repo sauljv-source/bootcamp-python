@@ -1,0 +1,17 @@
+{
+  "Primer usuario": {
+    "nombre": "Saul",
+    "edad": 22,
+    "rol": "Alumno de practicas"
+  },
+  "Segundo usuario": {
+    "nombre": "Ana",
+    "edad": 28,
+    "rol": "Analista de datos"
+  },
+  "Tercer usuario": {
+    "nombre": "Carlos",
+    "edad": 35,
+    "rol": "Desarrollador"
+  }
+}
