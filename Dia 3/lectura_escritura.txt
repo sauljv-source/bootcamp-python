@@ -1,4 +1,0 @@
-Dia 3
-Primera prueba para crear archivos desde phyton.
-Tambien de escritura de datos
-c:\Users\saulj_gfz9gv4\bootcamp-python\env\Scripts\python.exe "c:/Users/saulj_gfz9gv4/bootcamp-python/Dia 3/JSON.py"
