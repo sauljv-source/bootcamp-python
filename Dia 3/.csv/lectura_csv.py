@@ -10,6 +10,7 @@ try:
     
         for i in contenido:
             print(i)
-
 except FileNotFoundError:
-    print("No se ha podido leer porque 'lectura_escritura.csv' no existe.")
+    print("El archivo lectura_escritura.csv no existe.")
+except Exception as e:
+    print(f"Ha ocurrido un error al procesar el archivo: {e}")

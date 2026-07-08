@@ -5,5 +5,9 @@ try:
         contenido = archivo_txt.read()
     
         print(contenido)
+        
+# Exceptiom unifica todos los errores posibles, que no este el archivo, que este corrupto...        
 except FileNotFoundError:
-    print("No se ha podido leer porque 'lectura_escritura.txt' no existe.")
+    print("El archivo lectura_escritura.txt no existe.")
+except Exception as e:
+    print(f"Ha ocurrido un error al procesar el archivo: {e}")
