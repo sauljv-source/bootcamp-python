@@ -64,4 +64,4 @@ print(f"Habilidades faltantes: {faltantes}")
 if len(faltantes) == 0:
     print("Contratado")
 else:
-    print("Faltan competencias")
+    print('Faltan competencias')
