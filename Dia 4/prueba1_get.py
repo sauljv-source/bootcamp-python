@@ -21,6 +21,6 @@ try:
         print(f"Error en el servidor: {r.status_code}")
 
 except requests.exceptions.RequestException as e:
-    print(f"Error de red o peticion HTTP: {e}")
+    print(f"Error de red: {e}")
 except Exception as e:
     print(f"Error inesperado: {e}")
