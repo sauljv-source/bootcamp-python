@@ -14,8 +14,11 @@ try:
     if r.status_code == 200:
         df = pd.DataFrame([r.json()])
         print("Contenido de la url introducida:")
-        print(f"Formato tabla:\n{df.T}") # Formato tabla
-        print(f"Formato diccionario de phyton:\n{r.json()}") # Formato diccionario de phyton
+        print("(1) Formato filas:")
+        for i in r.json():
+            print(i,":", r.json()[i]) # Formato filas de cadenas
+        print(f"(2) Formato tabla con pandas:\n{df.T}") # Formato tabla con pandas
+        print(f"(3) Formato diccionario de phyton:\n{r.json()}") # Formato diccionario de phyton
 
     else:
         print(f"Error en el servidor: {r.status_code}")
