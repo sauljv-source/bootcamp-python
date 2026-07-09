@@ -115,9 +115,13 @@ nuevo_post = {
         "catchPhrase": datos_planos["company.catchPhrase"],
         "bs": datos_planos["company.bs"]
     }
-}
+}   
+# Los datos no se van a quedar guardados en la web
+# Si volvemos a pedirlos van a ser los datos originales
+# Es una web publica para practicar que no permite postear cosas nuevas
+# Post modificando el id para que parezca una actualizacion de datos ya escritos
 
-try:
+'''try:
     print("Enviando nuevos datos al servidor remoto")
     r = requests.post(url, json=nuevo_post, headers=cabeceras)
     print(f"Código de estado del servidor: {r.status_code}")
@@ -132,9 +136,23 @@ try:
 except requests.exceptions.RequestException as e:
     print(f"Error de red: {e}")
 except Exception as e:
+    print(f"Error inesperado: {e}")'''
+  
+# La version anterior es una chapuza que no funcionaria en una web real  
+# Para modificar datos se usa put, post solo para subir nuevos datos
+
+try:
+    print("Enviando nuevos datos al servidor remoto")
+    url_usuario = f"{url}/{id_usuario}"
+    r = requests.put(url_usuario, json=nuevo_post, headers=cabeceras)
+    print(f"Código de estado del servidor: {r.status_code}")
+    if r.status_code == 200:
+        print("\nDatos actualizados con exito")
+        print(pd.json_normalize(r.json()).T)
+    else:
+        print(f"El servidor rechazó la actualización. Estado: {r.status_code}")
+
+except requests.exceptions.RequestException as e:
+    print(f"Error de red: {e}")
+except Exception as e:
     print(f"Error inesperado: {e}")
-    
-# Los datos no se van a quedar guardados en la web
-# Si volvemos a pedirlos van a ser los datos originales
-# Es una web publica para practicar que no permite postear cosas nuevas
-# Lo que hemos hecho es hacer un nuevo post modificando el id para que parezca una actualizacion de datos ya escritos
