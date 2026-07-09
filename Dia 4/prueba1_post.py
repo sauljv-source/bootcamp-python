@@ -8,7 +8,7 @@ TOKEN = "token_secreto"
 
 cabeceras = {
     'Authorization': f'Bearer {TOKEN}',
-    'Content-Type': 'application/json; charset=UTF-8'
+    'Content-Type': 'application/json; charset=utf-8'
 }
 
 nuevo_post = {
