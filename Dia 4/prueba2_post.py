@@ -33,11 +33,11 @@ cabeceras = {
 }
 
 nuevo_post = {
-    'Nombre': comprobar_texto("Nombre: ", "El valor introducido no es un nombre válido.\nInténtalo de nuevo.").title(),
+    'name': comprobar_texto("Nombre: ", "El valor introducido no es un nombre válido.\nInténtalo de nuevo.").title(),
     'id': 101,
-    'Edad': comprobar_entero_positivo("Edad: ", "El valor tiene que ser positivo", "El dato introducido no es un valor válido.\nInténtalo de nuevo."),
-    'Titulo del post': input("Introduce el titulo de tu post: "),
-    'Introducción': input("Introduce la introducción de tu post: "),
+    'age': comprobar_entero_positivo("Edad: ", "El valor tiene que ser positivo", "El dato introducido no es un valor válido.\nInténtalo de nuevo."),
+    'title': input("Introduce el titulo de tu post: "),
+    'body': input("Introduce la introducción de tu post: "),
 }
 
 try:
