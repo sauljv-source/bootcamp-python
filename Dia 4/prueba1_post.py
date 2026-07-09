@@ -13,7 +13,7 @@ cabeceras = {
 
 nuevo_post = {
     'userId': 11,
-    'id': 101,
+    'id': 'x',
     'title': 'Entrada de Saúl',
     'body': 'Prueba dia 4 de la libreria requests con peticiones POST.',
 }
@@ -28,7 +28,7 @@ try:
     
     if r.status_code == 201:
         print("\nRecurso creado con exito")
-        print("Respuesta del servidor (ID asignado por la API):")
+        print("Respuesta del servidor (id asignado por la API):")
         print(pd.DataFrame([r.json()]).T)
     else:
         print(f"El servidor rechazó la petición. Estado: {r.status_code}")

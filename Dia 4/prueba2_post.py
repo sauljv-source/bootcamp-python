@@ -33,8 +33,8 @@ cabeceras = {
 }
 
 nuevo_post = {
+    'id': 'x',
     'name': comprobar_texto("Nombre: ", "El valor introducido no es un nombre válido.\nInténtalo de nuevo.").title(),
-    'id': 101,
     'age': comprobar_entero_positivo("Edad: ", "El valor tiene que ser positivo", "El dato introducido no es un valor válido.\nInténtalo de nuevo."),
     'title': input("Introduce el titulo de tu post: "),
     'body': input("Introduce la introducción de tu post: "),
@@ -50,7 +50,7 @@ try:
     
     if r.status_code == 201:
         print("\nRecurso creado con exito")
-        print("Respuesta del servidor (ID asignado por la API):")
+        print("Respuesta del servidor (id asignado por la API):")
         print(pd.DataFrame([r.json()]).T)
     else:
         print(f"El servidor rechazó la petición. Estado: {r.status_code}")
