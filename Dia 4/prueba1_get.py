@@ -2,6 +2,7 @@
 
 import requests
 import pandas as pd
+import json
 
 url = 'https://jsonplaceholder.typicode.com/posts/1'
 
@@ -19,7 +20,8 @@ try:
             print(i,":", r.json()[i]) # Formato filas de cadenas
         print(f"(2) Formato tabla con pandas:\n{df.T}") # Formato tabla con pandas
         print(f"(3) Formato diccionario de phyton:\n{r.json()}") # Formato diccionario de phyton
-
+        print(f"(4) Formato bonito de como se ve en la web con json:\n{json.dumps(r.json(), indent=2)}")
+        
     else:
         print(f"Error en el servidor: {r.status_code}")
 

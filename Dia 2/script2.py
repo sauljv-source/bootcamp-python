@@ -29,7 +29,7 @@ while True:
                 
                 if i["completada"] == True:
                     print(f"La tarea con id {id_a_cambiar} ya está completada.")
-                    continue
+                    tarea_encontrada = False
                     
                 else:
                     i["completada"] = True
