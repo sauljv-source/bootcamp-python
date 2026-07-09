@@ -22,7 +22,6 @@ cabeceras = {
 }
 
 nuevo_post = {
-    'id': 'x',
     'userId': comprobar_entero_positivo("Id de ususario: ", "El valor tiene que ser positivo", "El dato introducido no es un valor válido.\nInténtalo de nuevo."),
     'title': input("Introduce el titulo de tu post: "),
     'body': input("Introduce la introducción de tu post: "),
@@ -30,16 +29,19 @@ nuevo_post = {
 
 try:
     print("Enviando datos al servidor remoto")
-    # Hacemos el POST pasando los datos (json) y las cabeceras de seguridad (headers)
+    # Hacemos el post pasando los datos (json) y las cabeceras de seguridad (headers)
     r = requests.post(url, json=nuevo_post, headers=cabeceras)
     
-    # El código de estado 201 significa "Created" (Creado con éxito en REST API)
+    # El código de estado 201 significa creado con éxito en REST API
     print(f"Código de estado del servidor: {r.status_code}")
     
-    if r.status_code == 201:
+    if r.status_code == 201:    
         print("\nRecurso creado con exito")
         print("Respuesta del servidor (id asignado por la API):")
-        print(pd.DataFrame([r.json()]).T)
+        df_transpuesto = pd.DataFrame([r.json()]).T
+        orden_visual = ['id', 'userId', 'title', 'body']
+        df_ordenado = df_transpuesto.reindex(orden_visual)
+        print(df_ordenado)
     else:
         print(f"El servidor rechazó la petición. Estado: {r.status_code}")
 
