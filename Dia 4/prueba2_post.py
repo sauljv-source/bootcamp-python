@@ -2,17 +2,6 @@
 import requests
 import pandas as pd
 
-def comprobar_texto(mensaje, error_mensaje, comas=False):
-    while True:
-        entrada = input(mensaje).strip()
-        texto_a_validar = entrada.replace(" ", "")
-        if comas:
-            texto_a_validar = texto_a_validar.replace(",", "")
-            
-        if texto_a_validar.isalpha() and entrada:
-            return entrada
-        print(error_mensaje)
-
 def comprobar_entero_positivo(mensaje, error_mensaje1, error_mensaje2):
     while True:
         try:
@@ -34,8 +23,7 @@ cabeceras = {
 
 nuevo_post = {
     'id': 'x',
-    'name': comprobar_texto("Nombre: ", "El valor introducido no es un nombre válido.\nInténtalo de nuevo.").title(),
-    'age': comprobar_entero_positivo("Edad: ", "El valor tiene que ser positivo", "El dato introducido no es un valor válido.\nInténtalo de nuevo."),
+    'userId': comprobar_entero_positivo("Id de ususario: ", "El valor tiene que ser positivo", "El dato introducido no es un valor válido.\nInténtalo de nuevo."),
     'title': input("Introduce el titulo de tu post: "),
     'body': input("Introduce la introducción de tu post: "),
 }
