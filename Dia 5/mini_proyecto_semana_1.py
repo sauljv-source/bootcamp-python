@@ -62,7 +62,7 @@ try:
                 print(f"'{filtrado}' no existe en el registro. Introduce una columna válida.")
         
         while True:
-            # Mirar documentacion especifica de cada url para saber que datos son utiles tras filtrar
+            # Mirar documentacion especifica de cada url para saber que datos son utiles tras filtrarlos
             valor_buscado = input(f"¿Qué valor buscas para filtrar en la columna '{filtrado}'?: ").strip()
             # Convertimos a string temporalmente para evitar fallos si meten números por teclado ya que input() nos va a dar un string siempre
             # .astype(str) para transformar el dato de la url en texto, string
