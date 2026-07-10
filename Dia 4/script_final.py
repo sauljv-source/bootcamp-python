@@ -75,7 +75,7 @@ modificacion = input("Introduce el nuevo texto que quieras guardar: ")
 # Vamos a la posicion exacta de la tabla que hay que cambiar
 df.at[0, cambio] = modificacion
 
-# Pasamos los datos de la fila 0 a formato diccionario
+# Pasamos los datos de la fila 0 a formato diccionario.
 datos_planos = df.iloc[0].to_dict()
 
 nuevo_post = {
