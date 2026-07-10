@@ -58,14 +58,14 @@ while True:
     except Exception as e:
         print(f"Error inesperado: {e}")
 
+
 entradas = {col.lower(): col for col in df.columns}
 while True:
-    cambio = input("¿Que entrada quieres modificar?: ").strip()
-    if cambio in entradas:
-        cambio = entradas[cambio]
-        break
-    elif cambio == 'id':
+    cambio = input("¿Que entrada quieres modificar?: ").strip().lower()
+    if cambio == 'id':
         print("No es posible cambiar el id.\nIntroduce otra entrada.")
+    elif cambio in entradas:
+        break
     else:
         print("La entrada escrita no existe en el registro de datos.\nIntroduce una entrada que si exista para modificarla.")
         
