@@ -52,7 +52,7 @@ try:
         mapeo_columnas = {col.lower(): col for col in df_original.columns}
         
         while True:
-            filtrado = input("\n¿Por qué categoría quieres filtrar los datos?: ").strip().lower()
+            filtrado = input("\n¿Por que categoría quieres filtrar los datos?: ").strip().lower()
             
             if filtrado in mapeo_columnas:
                 # Recuperamos el nombre real exacto que necesita Pandas
@@ -63,7 +63,7 @@ try:
         
         while True:
             # Mirar documentacion especifica de cada url para saber que datos son utiles tras filtrarlos
-            valor_buscado = input(f"¿Qué valor buscas para filtrar en la columna '{filtrado}'?: ").strip()
+            valor_buscado = input(f"¿Que valor buscas para filtrar en la columna '{filtrado}'?: ").strip()
             # Convertimos a string temporalmente para evitar fallos si meten números por teclado ya que input() nos va a dar un string siempre
             # .astype(str) para transformar el dato de la url en texto, string
             # .str es por necesidad de pandas, si no lo pones da error las funciones .lower() o del estilo
