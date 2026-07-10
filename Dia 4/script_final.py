@@ -58,26 +58,11 @@ while True:
     except Exception as e:
         print(f"Error inesperado: {e}")
 
-entradas = [ 
-    'name', 
-    'username', 
-    'email', 
-    'phone', 
-    'website', 
-    'address.street', 
-    'address.suite', 
-    'address.city', 
-    'address.zipcode', 
-    'address.geo.lat', 
-    'address.geo.lng', 
-    'company.name', 
-    'company.catchPhrase', 
-    'company.bs'
-]
-
+entradas = {col.lower(): col for col in df.columns}
 while True:
     cambio = input("¿Que entrada quieres modificar?: ").strip()
     if cambio in entradas:
+        cambio = entradas[cambio]
         break
     elif cambio == 'id':
         print("No es posible cambiar el id.\nIntroduce otra entrada.")
