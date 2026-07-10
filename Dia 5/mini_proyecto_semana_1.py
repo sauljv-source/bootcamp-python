@@ -17,6 +17,7 @@ cabeceras = {
 try:
     r = requests.get(URL, headers=cabeceras)
     if r.status_code == 200:
+        # Por la clave users ya no se podria usar con cualquier url
         df_original = pd.json_normalize(r.json()['users'])
         
         print("\nColumnas disponibles para filtrar:")
