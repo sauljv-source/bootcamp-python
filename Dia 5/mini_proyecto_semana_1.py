@@ -7,6 +7,16 @@ import requests
 # URL de ejemplo, deberia funcionar con cualquiera
 URL = 'https://dummyjson.com/users'
 
+'''
+Url para probar:
+https://dummyjson.com/users (Diccionario) (la mejor para filtrar datos)
+https://dummyjson.com/posts (Diccionario)
+https://jsonplaceholder.typicode.com/users (Lista)
+https://jsonplaceholder.typicode.com/posts (Lista)
+https://rickandmortyapi.com/api/character (Diccionario)
+https://pokeapi.co/api/v2/pokemon (Diccionario)
+'''
+
 TOKEN = 'token_secreta'
 
 cabeceras = {
@@ -17,8 +27,23 @@ cabeceras = {
 try:
     r = requests.get(URL, headers=cabeceras)
     if r.status_code == 200:
-        # Por la clave users ya no se podria usar con cualquier url
-        df_original = pd.json_normalize(r.json()['users'])
+        json_puro = r.json()
+        lista_datos_cruda = None
+        
+        # Caso 1: Json es una lista
+        if isinstance(json_puro, list):
+            lista_datos_cruda = json_puro
+    
+        # Caso 2: El Json es un diccionario
+        elif isinstance(json_puro, dict):
+            for clave, valor in json_puro.items():
+                # Buscamos una clave con un valor que sea una lista y que su longitud sea mayor que cero, que no este vacia, los datos que nos interesan, users en este caso
+                if isinstance(valor, list) and len(valor) > 0:
+                    print(f"Datos anidados detectados. Extrayendo desde la clave: '{clave}'")
+                    lista_datos_cruda = valor
+                    break 
+    
+        df_original = pd.json_normalize(lista_datos_cruda)
         
         print("\nColumnas disponibles para filtrar:")
         print(list(df_original.columns))
@@ -37,6 +62,7 @@ try:
                 print(f"'{filtrado}' no existe en el registro. Introduce una columna válida.")
         
         while True:
+            # Mirar documentacion especifica de cada url para saber que datos son utiles tras filtrar
             valor_buscado = input(f"¿Qué valor buscas para filtrar en la columna '{filtrado}'?: ").strip()
             # Convertimos a string temporalmente para evitar fallos si meten números por teclado ya que input() nos va a dar un string siempre
             # .astype(str) para transformar el dato de la url en texto, string
