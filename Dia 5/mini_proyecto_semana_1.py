@@ -1,12 +1,11 @@
 # Miniproyecto final semana 1
 # Extracción masiva de datos, filtracion de dichos datos y los pasa a un csv
 
-import json
 import pandas as pd
 import requests
 
-URL_USERS = 'https://dummyjson.com/users'
-URL_POSTS = 'https://dummyjson.com/posts'
+# URL de ejemplo, deberia funcionar con cualquiera
+URL = 'https://dummyjson.com/users'
 
 TOKEN = 'token_secreta'
 
@@ -15,17 +14,48 @@ cabeceras = {
     'Content-Type': 'application/json; charset=utf-8'
 }
 
-# Lista vacía para acumular datos de forma eficiente
-lista_dataframes = []
-
 try:
-    r1 = requests.get(URL_USERS)
-    print(pd.json_normalize(r1.json()['users']))
-except Exception as e:
-    print()
+    r = requests.get(URL, headers=cabeceras)
+    if r.status_code == 200:
+        df_original = pd.json_normalize(r.json()['users'])
+        
+        print("\nColumnas disponibles para filtrar:")
+        print(list(df_original.columns))
+        # Todas las entradas, dinamicamente, y para que no exista sensitividad ante mayusculas
+        # Diccionario que relaciona la entrada en minuscula con la entrada original de la web
+        mapeo_columnas = {col.lower(): col for col in df_original.columns}
+        
+        while True:
+            filtrado = input("\n¿Por qué categoría quieres filtrar los datos?: ").strip().lower()
+            
+            if filtrado in mapeo_columnas:
+                # Recuperamos el nombre real exacto que necesita Pandas
+                filtrado = mapeo_columnas[filtrado]
+                break
+            else:
+                print(f"'{filtrado}' no existe en el registro. Introduce una columna válida.")
+        
+        while True:
+            valor_buscado = input(f"¿Qué valor buscas para filtrar en la columna '{filtrado}'?: ").strip()
+            # Convertimos a string temporalmente para evitar fallos si meten números por teclado ya que input() nos va a dar un string siempre
+            # .astype(str) para transformar el dato de la url en texto, string
+            # .str es por necesidad de pandas, si no lo pones da error las funciones .lower() o del estilo
+            df_filtrado = df_original[df_original[filtrado].astype(str).str.lower() == valor_buscado.lower()].copy()
+            
+            if not df_filtrado.empty:
+                print(f"Filtrado con éxito. Se encontraron {len(df_filtrado)} filas.")
+                break
+            else:
+                print(f"No hay ningún registro donde '{filtrado}' sea igual a '{valor_buscado}'. Inténtalo de nuevo.")
 
-try:
-    r2 = requests.get(URL_POSTS)
-    print(pd.json_normalize(r2.json()['posts']))
+        nombre_archivo = f"usuarios_filtrados_{filtrado}_{valor_buscado}.csv"
+        df_filtrado.to_csv(nombre_archivo, index=False, encoding='utf-8')
+        print(f"\nArchivo '{nombre_archivo}' creado y guardado con éxito.")
+
+    else:
+        print(f"Error del servidor. Código: {r.status_code}")
+
+except requests.exceptions.RequestException as e:
+    print(f"Error de red: {e}")
 except Exception as e:
-    print()
+    print(f"Error inesperado: {e}")
