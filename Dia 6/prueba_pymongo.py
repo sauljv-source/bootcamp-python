@@ -3,4 +3,4 @@
 import pymongo
 
 print("Instalación realizada correctamente")
-print(f"Versión: {pymongo.__version__}")
+print(f"Versión actual: {pymongo.__version__}")
