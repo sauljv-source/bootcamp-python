@@ -52,9 +52,9 @@ def consultas_avanzadas():
             print(f"No se encontró ningún estudiante con {age} años")
 
         # $in, dentro de una lista
-        print("\n----- Estudiantes en Matematicas o Física ($in) -----")
+        print("\n----- Estudiantes en Matemáticas o Física ($in) -----")
         # No incluimos ingenieria, esto se deberia hacer $regex ya que si contiene ingenieria nos devuelve ese resultado, $in no lo hace, y como todas las ingenierias son de algo, $in no encontraria ninguna y $regex si
-        filtro_in = {"licenciatura": {"$in": ["Matematicas", "Fisica"]}}
+        filtro_in = {"licenciatura": {"$in": ["Matemáticas", "Física"]}}
         for est in coleccion.find(filtro_in):
             print(f"- {est.get('nombre')} ({est.get('licenciatura')})")
 
