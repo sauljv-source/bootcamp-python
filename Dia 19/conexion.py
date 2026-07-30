@@ -4,9 +4,15 @@ import os
 import time
 import logging
 from pymongo import MongoClient
+from logging.handlers import RotatingFileHandler
 from dotenv import load_dotenv
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', handlers=[logging.FileHandler("pipeline.log"), logging.StreamHandler()])
+# Limite maximo de 5 MB por cada archivo y conserva hasta 3 archivos viejos, luego los va reutilizando cambiando los nombres
+
+file_handler = RotatingFileHandler("pipeline.log", maxBytes=5 * 1024 * 1024, backupCount=3, encoding="utf-8")
+console_handler = logging.StreamHandler()
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s", handlers=[file_handler, console_handler])
 
 def conectar_con_reintentos(mongo_uri, max_intentos):
     espera = 1
