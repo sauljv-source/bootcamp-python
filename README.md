@@ -1,6 +1,6 @@
 # Bootcamp Python
 
-Todo lo que fui haciendo durante el bootcamp de Python. El recorrido completo con los datos: bajarlos de APIs, guardarlos en MongoDB, analizarlos con consultas y pipelines, y publicarlos como datasets en Zenodo.
+Recorrido completo con los datos: extracción desde APIs, almacenamiento en MongoDB, análisis mediante consultas y pipelines, y publicación como datasets en Zenodo. Todo esto aprendiendo el lenguaje de programación Python.
 
 ## Contenido por días
 
