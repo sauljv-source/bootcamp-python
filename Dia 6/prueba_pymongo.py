@@ -11,7 +11,7 @@ load_dotenv()
 print("Instalación realizada correctamente")
 print(f"Versión actual: {pymongo.__version__}")
 
-# Creamos nuestro primer cluster en MongoDB Atlas y accedemos a el desde phyton
+# Creamos nuestro primer cluster en MongoDB Atlas y accedemos a el desde phyton.
 # Python lee la URL en memoria sin que nadie pueda ver la contraseña en el código
 MONGO_URI = os.getenv("MONGO_URI")
 
